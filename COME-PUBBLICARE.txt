@@ -1,0 +1,71 @@
+PUBBLICARE IL NUOVO SITO THESALT. (multi-pagina) SU REGISTER
+=============================================================
+
+Contenuto del sito (cartella thesalt-site / archivio thesalt-site.zip):
+- index.html                       -> Home (con The Salt Journal + Eventi)
+- format.html                      -> I Format
+- journal.html                     -> The Salt Journal (magazine)
+- journal-tra-destino-e-caso.html  -> Articolo 01
+- libri.html                       -> Libri
+- gallery.html                     -> Gallery
+- contatti.html                    -> Contatti
+- privacy.html / cookie.html       -> Informative
+- assets/                          -> style.css + cartella img
+
+FORM CONTATTI (FormSubmit):
+Il form invia via FormSubmit a psantoro@thesalt.it. Al PRIMO invio reale
+(dopo la pubblicazione) arriva una mail di attivazione a psantoro@thesalt.it:
+aprila e clicca il link una sola volta. Da lì le richieste arrivano in casella.
+(Se preferisci Brevo, mandami l'URL del form e lo sostituisco.)
+
+FOTO MANCANTI (placeholder "foto in arrivo"):
+La cartella foto non è arrivata. Servono: Degustazioni e Talk Dinner (Format),
+foto giusta Vetreria, e i nuovi eventi (Palmarola, Switch Explorer, Sua Maestà
+il Cuore, Gaggenau, Mondadori, Intrecci, Locanda Ruggieri, Taverna Paradiso x2,
+Ponza). Inviale e le inserisco. Anche la sequenza delle 4 immagini hero.
+
+Importante: tieni i file e la cartella "assets" SEMPRE insieme,
+nella stessa posizione. I link e le immagini sono relativi.
+
+
+PUBBLICAZIONE VIA FILE MANAGER (Register)
+-----------------------------------------
+Sei già nella cartella  www  (dove hai rinominato index.php e .htaccess).
+
+1. Elimina/sostituisci il vecchio index.html di prova (quello da 16KB):
+   ora ne carichiamo uno nuovo.
+
+2. Carica il sito. Due modi:
+   A) ZIP (più comodo): clicca Upload e carica "thesalt-site.zip" dentro www,
+      poi seleziona il file -> menu -> "Extract / Estrai".
+      Assicurati che index.html, format.html, libri.html, contatti.html e la
+      cartella assets finiscano DIRETTAMENTE dentro www (non in una sottocartella).
+   B) Manuale: carica i 4 file .html e l'intera cartella "assets" dentro www.
+
+3. Controlla che in www ci siano: index.html, format.html, libri.html,
+   contatti.html, assets/.  (index.php.bck e .htaccess.bck restano lì, disattivati.)
+
+
+SVUOTARE LA CACHE (passaggio finale, una volta sola)
+----------------------------------------------------
+Il vecchio sito è ancora in cache. Per vedere il nuovo:
+- Pannello Register -> hosting thesalt.it -> "Impostazioni Hosting" o
+  "Gestisci il tuo sito web" -> cerca "Cache / Svuota cache".
+- In alternativa chiedi all'assistenza Register (cod. cliente PS41176-EURO)
+  di "svuotare la cache del sito".
+Poi apri https://thesalt.it in finestra anonima.
+
+
+FORM CONTATTI / BREVO
+---------------------
+Il form ora invia automaticamente una mail a psantoro@thesalt.it.
+Per farlo passare da Brevo:
+1) In Brevo crea un Form con i campi Email, Nome, Messaggio.
+2) Copia l'URL d'invio (action), tipo https://sibforms.com/serve/XXXXXXXX
+3) In contatti.html sostituisci "BREVO_FORM_ACTION" con quell'URL (2 punti).
+   Mandami il codice/URL del form Brevo e lo faccio io in un minuto.
+
+COSE DA RIFINIRE (quando vuoi)
+------------------------------
+- Sezione SALE (nel deck) non ancora inclusa: aggiungibile.
+- Eventuali foto/titoli da sostituire con le versioni che preferisci.

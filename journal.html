@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Salt Journal — THESALT.</title>
+<meta name="description" content="THE SALT JOURNAL: piattaforma editoriale su territori, persone, prodotti, artisti e artigiani d'Italia, con il sale come chiave di lettura del mondo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/img/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="brand">THESALT.</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="menu" id="menu">
+      <li><a href="index.html#thesalt">The Salt</a></li>
+      <li><a href="format.html">Format</a></li>
+      <li><a href="index.html#eventi">Eventi</a></li>
+      <li><a href="journal.html" class="active">Journal</a></li>
+      <li><a href="index.html#podcast">Podcast</a></li>
+      <li><a href="libri.html">Libri</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contatti.html">Contatti</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="hero" style="min-height:auto;padding:54px 0 20px">
+  <div class="wrap">
+    <div class="tagline">Magazine</div>
+    <h1>The Salt Journal</h1>
+    <p class="sub">Una piattaforma editoriale in continua evoluzione: pensieri, immagini, incontri e racconti su territori, persone, prodotti, artisti e artigiani d'Italia — con il sale come chiave di lettura del mondo.</p>
+  </div>
+</section>
+
+<section class="section tight">
+  <div class="wrap">
+    <div class="journal-grid reveal">
+      <a class="jcard" href="journal-tra-destino-e-caso.html">
+        <img src="assets/img/j-destino-01.jpg" alt="Tra Destino e Caso — confezioni di sale artigianale">
+        <div class="tag">Articolo · 01 — 2026</div>
+        <h3>Tra Destino e Caso</h3>
+        <p>Benvenuti nel primo articolo di THE SALT JOURNAL. Due forze invisibili che hanno influenzato profondamente il mio percorso di vita. Proprio come il sale.</p>
+        <div class="more">Leggi l'articolo →</div>
+      </a>
+    </div>
+    <p style="color:var(--muted);margin-top:40px">Nuovi articoli in arrivo. Gli articoli precedenti saranno raccolti nell'archivio per anno.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img class="spoon" src="assets/img/spoonbill.png" alt="THE SALT">
+    <div class="fmark">THESALT.</div>
+    <div class="ftag">Un pizzico di sale può fare la differenza.</div>
+    <div class="flinks">
+      <a href="index.html#thesalt">The Salt</a><a href="format.html">Format</a><a href="index.html#eventi">Eventi</a>
+      <a href="journal.html">Journal</a><a href="index.html#podcast">Podcast</a><a href="libri.html">Libri</a>
+      <a href="gallery.html">Gallery</a><a href="contatti.html">Contatti</a>
+    </div>
+    <div class="flinks" style="margin-bottom:8px"><a href="privacy.html">Privacy Policy</a><a href="cookie.html">Cookie Policy</a></div>
+    <div class="copy">© 2026 Paolo Santoro — C.F / P.IVA 16687431003</div>
+  </div>
+</footer>
+
+<div id="cookie-banner">
+  <p>Questo sito utilizza cookie tecnici e strumenti di analisi statistica anonima per il corretto funzionamento delle pagine e per migliorare l'esperienza di navigazione. Nessun cookie di profilazione. Dettagli nella <a href="cookie.html">Cookie Policy</a>.</p>
+  <div class="cta">
+    <button class="decline" onclick="tsCookie('necessary')">Solo necessari</button>
+    <button class="accept" onclick="tsCookie('all')">Accetta</button>
+  </div>
+</div>
+
+<script>
+  const burger=document.getElementById('burger'),menu=document.getElementById('menu');
+  burger.addEventListener('click',()=>menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  try{if(!localStorage.getItem('ts-cookie')){document.getElementById('cookie-banner').classList.add('show');}}catch(e){}
+  function tsCookie(v){try{localStorage.setItem('ts-cookie',v);}catch(e){}document.getElementById('cookie-banner').classList.remove('show');}
+</script>
+</body>
+</html>

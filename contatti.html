@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contatti — THESALT.</title>
+<meta name="description" content="Contatta THESALT. — Paolo Santoro. Un pizzico di sale può fare la differenza.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/img/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="brand">THESALT.</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="menu" id="menu">
+      <li><a href="index.html#thesalt">The Salt</a></li>
+      <li><a href="format.html">Format</a></li>
+      <li><a href="index.html#eventi">Eventi</a></li>
+      <li><a href="journal.html">Journal</a></li>
+      <li><a href="index.html#podcast">Podcast</a></li>
+      <li><a href="libri.html">Libri</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contatti.html" class="active">Contatti</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="section contact" style="padding-top:54px">
+  <div class="wrap"><div class="contact-grid">
+    <img class="poster" src="assets/img/fleur.jpg" alt="Fleur de Sel — THESALT.">
+    <div>
+      <div class="kicker" style="color:var(--teal);font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;font-weight:600;margin-bottom:12px">Let's connect</div>
+      <h2>Un pizzico di sale può fare la differenza.</h2>
+      <p style="color:var(--ink-soft);margin-top:14px;max-width:54ch">Raccontaci la tua idea e costruiremo insieme un evento su misura. Dalla scelta del format ai dettagli operativi, ti accompagniamo con soluzioni personalizzate.</p>
+      <a class="mail" href="mailto:psantoro@thesalt.it">psantoro@thesalt.it</a>
+
+      <div id="thanks" style="display:none;border:1px solid var(--teal);padding:16px 18px;margin-top:18px;color:var(--teal);font-weight:600">
+        Grazie! La tua richiesta è stata inviata. Ti risponderemo al più presto.
+      </div>
+
+      <!-- Invio email via FormSubmit (gratuito).
+           ATTENZIONE: al PRIMO invio FormSubmit manda una mail di attivazione a
+           psantoro@thesalt.it: va aperta una sola volta e cliccato il link di conferma.
+           Da quel momento tutte le richieste arrivano in casella. -->
+      <form id="contactForm" action="https://formsubmit.co/psantoro@thesalt.it" method="POST">
+        <input type="hidden" name="_subject" value="Nuova richiesta dal sito THE SALT.">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://thesalt.it/contatti.html?ok=1">
+        <input type="text" name="_honey" style="display:none">
+        <div class="row2">
+          <input type="text"  name="Nome"  placeholder="Nome" required>
+          <input type="email" name="Email" placeholder="Email" required>
+        </div>
+        <input type="text" name="Oggetto" placeholder="Oggetto / tipo di evento">
+        <textarea name="Messaggio" rows="4" placeholder="Raccontaci la tua idea"></textarea>
+        <button type="submit" class="btn" style="justify-self:start">Invia richiesta</button>
+      </form>
+    </div>
+  </div></div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img class="spoon" src="assets/img/spoonbill.png" alt="THE SALT">
+    <div class="fmark">THESALT.</div>
+    <div class="ftag">Un pizzico di sale può fare la differenza.</div>
+    <div class="flinks">
+      <a href="index.html#thesalt">The Salt</a><a href="format.html">Format</a><a href="index.html#eventi">Eventi</a>
+      <a href="journal.html">Journal</a><a href="index.html#podcast">Podcast</a><a href="libri.html">Libri</a>
+      <a href="gallery.html">Gallery</a><a href="contatti.html">Contatti</a>
+    </div>
+    <div class="flinks" style="margin-bottom:8px"><a href="privacy.html">Privacy Policy</a><a href="cookie.html">Cookie Policy</a></div>
+    <div class="copy">© 2026 Paolo Santoro — C.F / P.IVA 16687431003</div>
+  </div>
+</footer>
+
+<div id="cookie-banner">
+  <p>Questo sito utilizza cookie tecnici e strumenti di analisi statistica anonima per il corretto funzionamento delle pagine e per migliorare l'esperienza di navigazione. Nessun cookie di profilazione. Dettagli nella <a href="cookie.html">Cookie Policy</a>.</p>
+  <div class="cta">
+    <button class="decline" onclick="tsCookie('necessary')">Solo necessari</button>
+    <button class="accept" onclick="tsCookie('all')">Accetta</button>
+  </div>
+</div>
+
+<script>
+  const burger=document.getElementById('burger'),menu=document.getElementById('menu');
+  burger.addEventListener('click',()=>menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+  // mostra conferma dopo l'invio (ritorno da FormSubmit con ?ok=1)
+  if(location.search.indexOf('ok=1')!==-1){var t=document.getElementById('thanks');if(t){t.style.display='block';var f=document.getElementById('contactForm');if(f)f.style.display='none';}}
+  try{if(!localStorage.getItem('ts-cookie')){document.getElementById('cookie-banner').classList.add('show');}}catch(e){}
+  function tsCookie(v){try{localStorage.setItem('ts-cookie',v);}catch(e){}document.getElementById('cookie-banner').classList.remove('show');}
+</script>
+</body>
+</html>

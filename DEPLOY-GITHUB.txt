@@ -1,0 +1,59 @@
+PUBBLICARE THE SALT SU GITHUB PAGES
+====================================
+
+Risultato: il sito sarà ospitato (gratis) da GitHub e visibile sul dominio
+thesalt.it. Le email restano su Register (i record MX NON si toccano).
+
+Nel pacchetto, oltre alle pagine, ci sono già:
+- .nojekyll  -> dice a GitHub di pubblicare i file così come sono
+- CNAME      -> contiene "thesalt.it" (il dominio personalizzato)
+
+
+PASSO 1 — CREA IL REPOSITORY
+----------------------------
+1. Vai su github.com e accedi (o crea un account gratuito).
+2. In alto a destra "+" -> "New repository".
+3. Nome repository: thesalt  (oppure quello che preferisci).
+4. Lascialo "Public". Crea il repository.
+
+
+PASSO 2 — CARICA I FILE
+-----------------------
+Nella pagina del repository vuoto:
+1. Clicca "uploading an existing file".
+2. Trascina TUTTO il contenuto della cartella thesalt-site
+   (i file .html, .nojekyll, CNAME e la cartella assets).
+   Suggerimento: estrai prima thesalt-site.zip e trascina i file interni,
+   NON la cartella che li contiene.
+3. In basso "Commit changes".
+
+
+PASSO 3 — ATTIVA GITHUB PAGES
+-----------------------------
+1. Nel repository: "Settings" -> menu a sinistra "Pages".
+2. In "Build and deployment" -> Source: "Deploy from a branch".
+3. Branch: "main", cartella "/ (root)" -> Save.
+4. Dopo 1-2 minuti il sito sarà online su:
+   https://TUO-UTENTE.github.io/thesalt/
+   (per provarlo subito, senza dominio, rimuovi prima il file CNAME)
+
+
+PASSO 4 — COLLEGARE IL DOMINIO thesalt.it (quando vuoi andare live)
+-------------------------------------------------------------------
+Nel pannello DNS di Register, per thesalt.it imposta:
+
+  Record A  (host @)  ->  185.199.108.153
+  Record A  (host @)  ->  185.199.109.153
+  Record A  (host @)  ->  185.199.110.153
+  Record A  (host @)  ->  185.199.111.153
+  Record CNAME (host www) -> TUO-UTENTE.github.io
+
+NON modificare i record MX: così le email @thesalt.it continuano a funzionare
+su Register.
+In GitHub: Settings -> Pages -> Custom domain: thesalt.it -> Save, e spunta
+"Enforce HTTPS" (dopo qualche minuto).
+
+NB: se attivi GitHub Pages sul dominio, NON serve più caricare il sito nel
+File Manager di Register: il sito viene servito da GitHub.
+
+Se preferisci, possiamo farlo insieme passo-passo sullo schermo.
