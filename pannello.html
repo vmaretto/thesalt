@@ -179,12 +179,13 @@ function srcFoto(p){ return newFiles[p] ? 'data:image/jpeg;base64,' + newFiles[p
 function genEventoCard(ev){
   const t = esc(ev.tag), ti = esc(ev.titolo), lu = esc(ev.luogo);
   const meta = `<div class="tag">${t}</div><h5>${ti}</h5><div class="cap">${lu}</div>`;
+  const altBase = t + ' ' + ti + (lu ? ' — ' + lu : '');
   if(ev.foto.length <= 1){
     const src = ev.foto[0] || 'assets/img/ev-soon.jpg';
-    return `      <div class="card"><img class="ph" src="${src}" alt="${t} — ${ti}">${meta}</div>`;
+    return `      <div class="card"><img class="ph" src="${src}" alt="${altBase}">${meta}</div>`;
   }
   const imgs = ev.foto.map((f,i) =>
-    `          <img${i===0?' class="on"':''} src="${f}" alt="${t} ${ti} — foto ${i+1}">`).join('\n');
+    `          <img${i===0?' class="on"':''} src="${f}" alt="${altBase}, foto ${i+1}">`).join('\n');
   return `      <div class="card">\n        <div class="ph slides">\n${imgs}\n        </div>\n        ${meta}\n      </div>`;
 }
 function genEventi(){ return data.eventi.map(genEventoCard).join('\n'); }
