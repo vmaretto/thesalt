@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Pannello — THESALT.</title>
+<link rel="icon" href="assets/img/favicon.ico" sizes="any">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#141414;--soft:#3d3d3d;--muted:#7c7c7c;--line:#e6e4e0;--teal:#2f5d52;--bg:#faf9f7}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,sans-serif;color:var(--ink);background:var(--bg);padding-bottom:120px}
+  .top{background:#fff;border-bottom:1px solid var(--line);padding:18px 24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .brand{font-family:Archivo;font-weight:900;font-size:1.3rem;letter-spacing:-.02em}
+  .brand span{color:var(--teal)}
+  .tabs{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+  .tabs button{font-family:inherit;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+    padding:9px 16px;border:1px solid var(--line);background:#fff;cursor:pointer;color:var(--muted)}
+  .tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .wrap{max-width:960px;margin:0 auto;padding:28px 20px}
+  h2{font-family:Archivo;font-weight:800;font-size:1.4rem;margin-bottom:6px}
+  .hint{color:var(--muted);font-size:.88rem;margin-bottom:22px;line-height:1.5}
+  .item{background:#fff;border:1px solid var(--line);padding:16px;margin-bottom:14px}
+  .item .head{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .item .head .titolo{font-weight:600;flex:1;min-width:180px}
+  .item .head .sub{color:var(--muted);font-size:.82rem;width:100%}
+  .thumbs{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .thumb{position:relative;width:92px}
+  .thumb img{width:92px;height:69px;object-fit:cover;display:block;border:1px solid var(--line)}
+  .thumb .tools{display:flex;justify-content:space-between;margin-top:2px}
+  .thumb .tools button{border:0;background:none;cursor:pointer;font-size:.85rem;color:var(--muted);padding:1px 4px}
+  .thumb .tools button:hover{color:var(--ink)}
+  label{display:block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--muted);margin:12px 0 4px}
+  input[type=text],input[type=password],textarea,select{width:100%;font-family:inherit;font-size:.95rem;padding:10px 12px;border:1px solid var(--line);background:#fff}
+  textarea{min-height:200px;line-height:1.6}
+  .btn{display:inline-block;font-family:inherit;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+    padding:11px 20px;border:1px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer}
+  .btn.ghost{background:#fff;color:var(--ink)}
+  .btn.small{padding:7px 12px;font-size:.7rem}
+  .btn.danger{border-color:#b04a3a;color:#b04a3a;background:#fff}
+  .btn:disabled{opacity:.5;cursor:default}
+  .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:640px){.grid2{grid-template-columns:1fr}}
+  .pubbar{position:fixed;left:0;right:0;bottom:0;background:#141414;color:#fff;padding:14px 24px;display:none;
+    align-items:center;gap:16px;z-index:50;flex-wrap:wrap}
+  .pubbar.show{display:flex}
+  .pubbar .msg{font-size:.9rem;flex:1;min-width:200px}
+  .pubbar .btn{background:#fff;color:#141414;border-color:#fff}
+  #log{background:#0e0e0e;color:#9fd3c2;font:12px/1.6 ui-monospace,monospace;padding:14px;margin-top:16px;
+    white-space:pre-wrap;display:none;max-height:220px;overflow:auto}
+  .ok{color:var(--teal);font-weight:600}
+  .warn{background:#fdf6e8;border:1px solid #e8d9b0;padding:12px 14px;font-size:.86rem;line-height:1.55;margin-bottom:20px}
+  .setup-steps{line-height:1.7;font-size:.92rem}
+  .setup-steps li{margin-bottom:10px}
+  code{background:#f0eeea;padding:1px 6px;font-size:.85em}
+  a{color:var(--teal)}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="brand">THESALT<span>.</span> <span style="color:var(--muted);font-family:Inter;font-weight:500;font-size:.85rem">pannello di gestione</span></div>
+  <div class="tabs">
+    <button data-tab="eventi" class="on">Eventi</button>
+    <button data-tab="journal">Journal</button>
+    <button data-tab="podcast">Podcast</button>
+    <button data-tab="setup">Impostazioni</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div id="pane-eventi"></div>
+  <div id="pane-journal" style="display:none"></div>
+  <div id="pane-podcast" style="display:none"></div>
+  <div id="pane-setup" style="display:none"></div>
+  <pre id="log"></pre>
+</div>
+
+<div class="pubbar" id="pubbar">
+  <div class="msg">Ci sono modifiche non pubblicate.</div>
+  <button class="btn" id="btnPub">Pubblica sul sito</button>
+  <button class="btn ghost" id="btnScarta" style="background:none;color:#fff;border-color:#666">Scarta modifiche</button>
+</div>
+
+<script>
+'use strict';
+/* ============ CONFIG ============ */
+const REPO = 'vmaretto/thesalt';
+const BRANCH = 'main';
+const API = 'https://api.github.com/repos/' + REPO + '/contents/';
+const MAXW = 1600, JPGQ = 0.82;
+
+/* ============ STATO ============ */
+let data = null;          // contenuti.json
+let dirty = false;
+let newFiles = {};        // path -> base64 (nuove immagini da caricare)
+let busy = false;
+
+const $ = s => document.querySelector(s);
+const token = () => localStorage.getItem('ts-admin-token') || '';
+
+/* ============ GITHUB API ============ */
+async function ghGet(path){
+  const h = {'Accept':'application/vnd.github+json'};
+  if(token()) h['Authorization'] = 'Bearer ' + token();
+  const r = await fetch(API + path + '?ref=' + BRANCH + '&t=' + Date.now(), {headers:h});
+  if(!r.ok) throw new Error('GET ' + path + ' → ' + r.status);
+  const j = await r.json();
+  const bin = atob(j.content.replace(/\n/g,''));
+  const bytes = Uint8Array.from(bin, c => c.charCodeAt(0));
+  return {text: new TextDecoder().decode(bytes), sha: j.sha};
+}
+async function ghPut(path, contentB64, message){
+  let sha;
+  try { sha = (await ghGetMeta(path)).sha; } catch(e){ sha = undefined; }
+  const body = {message, content: contentB64, branch: BRANCH};
+  if(sha) body.sha = sha;
+  const r = await fetch(API + path, {method:'PUT',
+    headers:{'Accept':'application/vnd.github+json','Authorization':'Bearer '+token(),'Content-Type':'application/json'},
+    body: JSON.stringify(body)});
+  if(!r.ok){ const t = await r.text(); throw new Error('PUT ' + path + ' → ' + r.status + ' ' + t.slice(0,140)); }
+}
+async function ghGetMeta(path){
+  const r = await fetch(API + path + '?ref=' + BRANCH + '&t=' + Date.now(),
+    {headers:{'Accept':'application/vnd.github+json','Authorization':'Bearer '+token()}});
+  if(!r.ok) throw new Error(String(r.status));
+  return r.json();
+}
+function utf8b64(s){
+  const bytes = new TextEncoder().encode(s);
+  let bin = '';
+  for(let i=0;i<bytes.length;i+=8192) bin += String.fromCharCode.apply(null, bytes.subarray(i,i+8192));
+  return btoa(bin);
+}
+
+/* ============ UTIL ============ */
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function slugify(s){
+  return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
+    .replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,50) || 'senza-titolo';
+}
+function markDirty(){ dirty = true; $('#pubbar').classList.add('show'); }
+function pad2(n){ return String(n).padStart(2,'0'); }
+
+function resizeToJpeg(file){
+  return new Promise((res, rej) => {
+    const img = new Image();
+    img.onload = () => {
+      const scale = Math.min(1, MAXW / Math.max(img.width, img.height));
+      const c = document.createElement('canvas');
+      c.width = Math.round(img.width * scale); c.height = Math.round(img.height * scale);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      res(c.toDataURL('image/jpeg', JPGQ).split(',')[1]);
+      URL.revokeObjectURL(img.src);
+    };
+    img.onerror = rej;
+    img.src = URL.createObjectURL(file);
+  });
+}
+function fotoPrefix(ev){
+  if(ev.foto.length){
+    const m = ev.foto[0].match(/^(.*?)-?\d*\.jpg$/);
+    if(m) return m[1].replace(/-$/,'');
+  }
+  return 'assets/img/ev-' + slugify(ev.titolo);
+}
+function nextFotoName(ev){
+  const pre = fotoPrefix(ev);
+  let max = 0;
+  const all = ev.foto.concat(Object.keys(newFiles));
+  all.forEach(p => { const m = p.match(new RegExp('^' + pre.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + '-(\\d+)\\.jpg$')); if(m) max = Math.max(max, +m[1]); });
+  return pre + '-' + pad2(max + 1) + '.jpg';
+}
+function srcFoto(p){ return newFiles[p] ? 'data:image/jpeg;base64,' + newFiles[p] : p; }
+
+/* ============ GENERATORI HTML (stesso markup del sito) ============ */
+function genEventoCard(ev){
+  const t = esc(ev.tag), ti = esc(ev.titolo), lu = esc(ev.luogo);
+  const meta = `<div class="tag">${t}</div><h5>${ti}</h5><div class="cap">${lu}</div>`;
+  if(ev.foto.length <= 1){
+    const src = ev.foto[0] || 'assets/img/ev-soon.jpg';
+    return `      <div class="card"><img class="ph" src="${src}" alt="${t} — ${ti}">${meta}</div>`;
+  }
+  const imgs = ev.foto.map((f,i) =>
+    `          <img${i===0?' class="on"':''} src="${f}" alt="${t} ${ti} — foto ${i+1}">`).join('\n');
+  return `      <div class="card">\n        <div class="ph slides">\n${imgs}\n        </div>\n        ${meta}\n      </div>`;
+}
+function genEventi(){ return data.eventi.map(genEventoCard).join('\n'); }
+
+function genJCardIndex(){
+  const a = data.articoli[0];
+  if(!a) return '';
+  return `    <a class="jcard reveal" href="journal-${a.slug}.html" style="display:grid;grid-template-columns:1.05fr 0.95fr;gap:40px;align-items:center">
+      <img src="assets/img/journal-cover.jpg" alt="The Salt Journal" style="aspect-ratio:4/3">
+      <div>
+        <div class="tag">Articolo · ${esc(a.numero)}</div>
+        <h3>${esc(a.titolo)}</h3>
+        <p>${esc(a.estratto)}</p>
+        <div class="more">Leggi l'articolo →</div>
+      </div>
+    </a>`;
+}
+function genJournalGrid(){
+  return data.articoli.map(a => `      <a class="jcard" href="journal-${a.slug}.html">
+        <img src="${a.immagine}" alt="${esc(a.alt || a.titolo)}">
+        <div class="tag">Articolo · ${esc(a.numero)} — ${esc(a.anno)}</div>
+        <h3>${esc(a.titolo)}</h3>
+        <p>${esc(a.estratto)}</p>
+        <div class="more">Leggi l'articolo →</div>
+      </a>`).join('\n');
+}
+function genPodcast(){
+  if(!data.podcast.length) return '';
+  const cards = data.podcast.map((e,i) => {
+    const inner = `<div class="tag">Episodio ${pad2(data.podcast.length - i)}${e.data ? ' · ' + esc(e.data) : ''}</div><h5>${esc(e.titolo)}</h5><div class="cap">${esc(e.descrizione || '')}</div>`;
+    return e.link
+      ? `      <a class="card" href="${esc(e.link)}" target="_blank" rel="noopener">${inner}</a>`
+      : `      <div class="card">${inner}</div>`;
+  }).join('\n');
+  return `    <div class="shead reveal" style="margin-top:64px">
+      <div class="kicker">Episodi</div>
+      <h2 style="font-size:clamp(1.3rem,2.6vw,1.8rem)">Ascolta gli episodi</h2>
+    </div>
+    <div class="grid reveal">
+${cards}
+    </div>`;
+}
+function genArchivio(current){
+  const anni = [...new Set(data.articoli.map(a => a.anno))].sort().reverse();
+  return anni.map(y => `        <div class="year">${esc(y)}</div>\n` +
+    data.articoli.filter(a => a.anno === y).map(a =>
+      `        <a href="journal-${a.slug}.html"${a.slug===current.slug?' style="color:var(--teal)"':''}>${esc(a.numero)} · ${esc(a.titolo)}</a>`).join('\n')
+  ).join('\n');
+}
+function genArticoloPage(a){
+  const paras = a.corpo.map(p => p.trim().startsWith('<p') ? '        ' + p : `        <p>${p}</p>`).join('\n');
+  return `<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(a.titolo)} — The Salt Journal</title>
+<meta name="description" content="${esc(a.estratto)}">
+<meta property="og:title" content="${esc(a.titolo)} — The Salt Journal">
+<meta property="og:description" content="${esc(a.estratto)}">
+<meta property="og:image" content="https://thesalt.it/${a.immagine}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/img/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="brand">THESALT.</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="menu" id="menu">
+      <li><a href="index.html#thesalt">The Salt</a></li>
+      <li><a href="format.html">Format</a></li>
+      <li><a href="index.html#eventi">Eventi</a></li>
+      <li><a href="journal.html" class="active">Journal</a></li>
+      <li><a href="index.html#podcast">Podcast</a></li>
+      <li><a href="libri.html">Libri</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contatti.html">Contatti</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="section" style="padding-top:54px">
+  <div class="wrap">
+    <div class="article-wrap">
+      <article class="article reveal">
+        <div class="eyebrow">The Salt Journal · ${esc(a.numero)}</div>
+        <h1>${esc(a.titolo)}</h1>
+        <div class="byline">di Paolo Santoro — The Salt Man</div>
+        <img class="lead-img" src="${a.immagine}" alt="${esc(a.alt || a.titolo)}">
+
+${paras}
+      </article>
+
+      <aside class="archive reveal">
+        <h4>Archivio</h4>
+${genArchivio(a)}
+        <p style="color:var(--muted);font-size:.82rem;margin-top:18px">Nuovi articoli in arrivo.</p>
+        <a href="journal.html" style="border:0;color:var(--teal);font-weight:600;margin-top:10px">← Tutti gli articoli</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img class="spoon" src="assets/img/spoonbill.png" alt="THE SALT">
+    <div class="fmark">THESALT.</div>
+    <div class="ftag">Un pizzico di sale può fare la differenza.</div>
+    <div class="flinks">
+      <a href="index.html#thesalt">The Salt</a><a href="format.html">Format</a><a href="index.html#eventi">Eventi</a>
+      <a href="journal.html">Journal</a><a href="index.html#podcast">Podcast</a><a href="libri.html">Libri</a>
+      <a href="gallery.html">Gallery</a><a href="contatti.html">Contatti</a>
+    </div>
+    <div class="flinks" style="margin-bottom:8px"><a href="privacy.html">Privacy Policy</a><a href="cookie.html">Cookie Policy</a></div>
+    <div class="copy">© 2026 Paolo Santoro — C.F / P.IVA 16687431003</div>
+  </div>
+</footer>
+
+<div id="cookie-banner">
+  <p>Questo sito utilizza cookie tecnici e strumenti di analisi statistica anonima per il corretto funzionamento delle pagine e per migliorare l'esperienza di navigazione. Nessun cookie di profilazione. Dettagli nella <a href="cookie.html">Cookie Policy</a>.</p>
+  <div class="cta">
+    <button class="decline" onclick="tsCookie('necessary')">Solo necessari</button>
+    <button class="accept" onclick="tsCookie('all')">Accetta</button>
+  </div>
+</div>
+
+<script>
+  const burger=document.getElementById('burger'),menu=document.getElementById('menu');
+  burger.addEventListener('click',()=>menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  try{if(!localStorage.getItem('ts-cookie')){document.getElementById('cookie-banner').classList.add('show');}}catch(e){}
+  function tsCookie(v){try{localStorage.setItem('ts-cookie',v);}catch(e){}document.getElementById('cookie-banner').classList.remove('show');}
+<\/script>
+</body>
+</html>
+`;
+}
+function replaceSection(html, start, end, inner){
+  const rx = new RegExp('(<!-- ' + start + '[^>]*-->)[\\s\\S]*?(<!-- ' + end + ' -->)');
+  if(!rx.test(html)) throw new Error('Marker ' + start + ' non trovato');
+  return html.replace(rx, (m, a, b) => a + '\n' + inner + (inner ? '\n' : '') + '      '.slice(0, start==='JCARD:START'||start==='PODCAST:START'?4:6) + b);
+}
+
+/* ============ RENDER UI ============ */
+function switchTab(name){
+  document.querySelectorAll('.tabs button').forEach(b => b.classList.toggle('on', b.dataset.tab === name));
+  ['eventi','journal','podcast','setup'].forEach(t => $('#pane-' + t).style.display = t === name ? '' : 'none');
+}
+document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => switchTab(b.dataset.tab)));
+
+function renderEventi(){
+  const p = $('#pane-eventi');
+  if(!data){ p.innerHTML = '<p class="hint">Caricamento…</p>'; return; }
+  p.innerHTML = `<h2>Eventi</h2>
+    <p class="hint">L'ordine qui sotto è l'ordine sul sito: <strong>il più recente va in cima</strong> (usa le frecce ⬆︎⬇︎).
+    Le foto si scorrono col ‹ › sul sito; la prima foto è la copertina della card.</p>
+    <div class="row" style="margin:0 0 18px"><button class="btn" id="addEv">+ Nuovo evento</button></div>
+    <div id="evList"></div>`;
+  $('#addEv').onclick = () => {
+    data.eventi.unshift({tag:'Talk Dinner', titolo:'Nuovo evento', luogo:'', foto:[]});
+    markDirty(); renderEventi();
+  };
+  const list = $('#evList');
+  data.eventi.forEach((ev, i) => {
+    const d = document.createElement('div'); d.className = 'item';
+    d.innerHTML = `
+      <div class="head">
+        <span class="titolo">${esc(ev.titolo)}</span>
+        <button class="btn small ghost" data-a="up" ${i===0?'disabled':''}>⬆︎</button>
+        <button class="btn small ghost" data-a="down" ${i===data.eventi.length-1?'disabled':''}>⬇︎</button>
+        <button class="btn small ghost" data-a="edit">Modifica</button>
+        <button class="btn small danger" data-a="del">Elimina</button>
+        <span class="sub">${esc(ev.tag)} · ${esc(ev.luogo)} · ${ev.foto.length} foto</span>
+      </div>
+      <div class="editor" style="display:none">
+        <div class="grid2">
+          <div><label>Tipo (es. Talk Dinner, Masterclass)</label><input type="text" data-f="tag" value="${esc(ev.tag)}"></div>
+          <div><label>Titolo</label><input type="text" data-f="titolo" value="${esc(ev.titolo)}"></div>
+        </div>
+        <label>Luogo / sottotitolo (es. Show Room · Roma)</label><input type="text" data-f="luogo" value="${esc(ev.luogo)}">
+        <label>Foto (la prima è la copertina — ← → per spostare, ✕ per togliere)</label>
+        <div class="thumbs"></div>
+        <div class="row"><label class="btn ghost small" style="margin:0;cursor:pointer">+ Aggiungi foto<input type="file" accept="image/*" multiple style="display:none"></label></div>
+      </div>`;
+    const editor = d.querySelector('.editor');
+    d.querySelector('[data-a=edit]').onclick = () => { editor.style.display = editor.style.display ? '' : 'none'; };
+    d.querySelector('[data-a=del]').onclick = () => { if(confirm('Eliminare "' + ev.titolo + '" dal sito?')){ data.eventi.splice(i,1); markDirty(); renderEventi(); } };
+    d.querySelector('[data-a=up]').onclick = () => { data.eventi.splice(i-1,0,data.eventi.splice(i,1)[0]); markDirty(); renderEventi(); };
+    d.querySelector('[data-a=down]').onclick = () => { data.eventi.splice(i+1,0,data.eventi.splice(i,1)[0]); markDirty(); renderEventi(); };
+    d.querySelectorAll('[data-f]').forEach(inp => inp.addEventListener('input', () => { ev[inp.dataset.f] = inp.value; markDirty(); }));
+    const thumbs = d.querySelector('.thumbs');
+    const renderThumbs = () => {
+      thumbs.innerHTML = '';
+      ev.foto.forEach((f, k) => {
+        const t = document.createElement('div'); t.className = 'thumb';
+        t.innerHTML = `<img src="${srcFoto(f)}" alt=""><div class="tools">
+          <button title="Sposta prima" ${k===0?'disabled':''}>←</button>
+          <button title="Togli">✕</button>
+          <button title="Sposta dopo" ${k===ev.foto.length-1?'disabled':''}>→</button></div>`;
+        const [bl, bx, br] = t.querySelectorAll('button');
+        bl.onclick = () => { ev.foto.splice(k-1,0,ev.foto.splice(k,1)[0]); markDirty(); renderThumbs(); };
+        br.onclick = () => { ev.foto.splice(k+1,0,ev.foto.splice(k,1)[0]); markDirty(); renderThumbs(); };
+        bx.onclick = () => { ev.foto.splice(k,1); markDirty(); renderThumbs(); };
+        thumbs.appendChild(t);
+      });
+    };
+    renderThumbs();
+    d.querySelector('input[type=file]').addEventListener('change', async e => {
+      for(const file of e.target.files){
+        const b64 = await resizeToJpeg(file);
+        const name = nextFotoName(ev);
+        newFiles[name] = b64;
+        ev.foto.push(name);
+      }
+      markDirty(); renderThumbs();
+      d.querySelector('.head .sub').textContent = ev.tag + ' · ' + ev.luogo + ' · ' + ev.foto.length + ' foto';
+    });
+    list.appendChild(d);
+  });
+}
+
+function renderJournal(){
+  const p = $('#pane-journal');
+  if(!data){ p.innerHTML = '<p class="hint">Caricamento…</p>'; return; }
+  p.innerHTML = `<h2>The Salt Journal</h2>
+    <p class="hint">Ogni articolo diventa una pagina del sito. Scrivi il testo separando i paragrafi con una riga vuota.
+    Il più recente appare anche nella home.</p>
+    <div class="row" style="margin:0 0 18px"><button class="btn" id="addArt">+ Nuovo articolo</button></div>
+    <div id="artList"></div>`;
+  $('#addArt').onclick = () => {
+    const num = pad2(data.articoli.length + 1);
+    data.articoli.unshift({slug:'', numero:num, anno:String(new Date().getFullYear()),
+      titolo:'', estratto:'', immagine:'', alt:'', corpo:[]});
+    markDirty(); renderJournal();
+    p.querySelector('.editor').style.display = '';
+  };
+  const list = $('#artList');
+  data.articoli.forEach((a, i) => {
+    const d = document.createElement('div'); d.className = 'item';
+    d.innerHTML = `
+      <div class="head">
+        <span class="titolo">${esc(a.titolo || '(nuovo articolo)')}</span>
+        <button class="btn small ghost" data-a="edit">Modifica</button>
+        ${i===0 && data.articoli.length>1 ? '' : ''}
+        <button class="btn small danger" data-a="del">Elimina</button>
+        <span class="sub">Articolo ${esc(a.numero)} — ${esc(a.anno)}</span>
+      </div>
+      <div class="editor" style="display:none">
+        <div class="grid2">
+          <div><label>Titolo</label><input type="text" data-f="titolo" value="${esc(a.titolo)}"></div>
+          <div><label>Anno</label><input type="text" data-f="anno" value="${esc(a.anno)}"></div>
+        </div>
+        <label>Estratto (2 righe che appaiono nelle anteprime)</label>
+        <textarea data-f="estratto" style="min-height:70px">${esc(a.estratto)}</textarea>
+        <label>Immagine di apertura</label>
+        <div class="row">
+          ${a.immagine ? `<img src="${srcFoto(a.immagine)}" style="width:130px;height:90px;object-fit:cover;border:1px solid var(--line)">` : '<span class="hint" style="margin:0">nessuna immagine</span>'}
+          <label class="btn ghost small" style="margin:0;cursor:pointer">Carica immagine<input type="file" accept="image/*" style="display:none"></label>
+        </div>
+        <label>Testo dell'articolo</label>
+        <textarea data-f="corpo">${esc(a.corpo.join('\n\n'))}</textarea>
+      </div>`;
+    const editor = d.querySelector('.editor');
+    d.querySelector('[data-a=edit]').onclick = () => { editor.style.display = editor.style.display ? '' : 'none'; };
+    d.querySelector('[data-a=del]').onclick = () => { if(confirm('Eliminare l’articolo "' + a.titolo + '"?')){ data.articoli.splice(i,1); markDirty(); renderJournal(); } };
+    d.querySelectorAll('[data-f]').forEach(inp => inp.addEventListener('input', () => {
+      if(inp.dataset.f === 'corpo') a.corpo = inp.value.split(/\n\s*\n/).map(s => s.trim()).filter(Boolean);
+      else a[inp.dataset.f] = inp.value;
+      if(inp.dataset.f === 'titolo' && !a.slug) d.querySelector('.head .titolo').textContent = inp.value;
+      markDirty();
+    }));
+    d.querySelector('input[type=file]').addEventListener('change', async e => {
+      const file = e.target.files[0]; if(!file) return;
+      const b64 = await resizeToJpeg(file);
+      const slug = a.slug || slugify(a.titolo || 'articolo');
+      const name = 'assets/img/j-' + slug + '-01.jpg';
+      newFiles[name] = b64; a.immagine = name; a.alt = a.titolo;
+      markDirty(); renderJournal();
+    });
+    list.appendChild(d);
+  });
+}
+
+function renderPodcast(){
+  const p = $('#pane-podcast');
+  if(!data){ p.innerHTML = '<p class="hint">Caricamento…</p>'; return; }
+  p.innerHTML = `<h2>Podcast — The Salt People</h2>
+    <p class="hint">Gli episodi appaiono nella sezione Podcast della home, il più recente in alto.
+    Nel campo link incolla l'indirizzo dell'episodio (Spotify, Apple Podcasts o simili).</p>
+    <div class="row" style="margin:0 0 18px"><button class="btn" id="addEp">+ Nuovo episodio</button></div>
+    <div id="epList"></div>`;
+  $('#addEp').onclick = () => { data.podcast.unshift({titolo:'', descrizione:'', data:'', link:''}); markDirty(); renderPodcast(); };
+  const list = $('#epList');
+  data.podcast.forEach((ep, i) => {
+    const d = document.createElement('div'); d.className = 'item';
+    d.innerHTML = `
+      <div class="head">
+        <span class="titolo">${esc(ep.titolo || '(nuovo episodio)')}</span>
+        <button class="btn small ghost" data-a="edit">Modifica</button>
+        <button class="btn small danger" data-a="del">Elimina</button>
+        <span class="sub">${esc(ep.data || '')}</span>
+      </div>
+      <div class="editor" style="display:none">
+        <div class="grid2">
+          <div><label>Titolo episodio</label><input type="text" data-f="titolo" value="${esc(ep.titolo)}"></div>
+          <div><label>Data (es. Ottobre 2026)</label><input type="text" data-f="data" value="${esc(ep.data)}"></div>
+        </div>
+        <label>Descrizione breve</label><input type="text" data-f="descrizione" value="${esc(ep.descrizione)}">
+        <label>Link all'episodio</label><input type="text" data-f="link" value="${esc(ep.link)}" placeholder="https://open.spotify.com/…">
+      </div>`;
+    const editor = d.querySelector('.editor');
+    d.querySelector('[data-a=edit]').onclick = () => { editor.style.display = editor.style.display ? '' : 'none'; };
+    d.querySelector('[data-a=del]').onclick = () => { if(confirm('Eliminare questo episodio?')){ data.podcast.splice(i,1); markDirty(); renderPodcast(); } };
+    d.querySelectorAll('[data-f]').forEach(inp => inp.addEventListener('input', () => { ep[inp.dataset.f] = inp.value; markDirty(); }));
+    list.appendChild(d);
+  });
+}
+
+function renderSetup(){
+  const p = $('#pane-setup');
+  p.innerHTML = `<h2>Impostazioni</h2>
+    <div class="warn"><strong>Come funziona:</strong> questo pannello salva le modifiche sul repository GitHub del sito
+    (<code>${REPO}</code>). Se il sito è collegato a Vercel o GitHub Pages, le modifiche vanno online da sole in 1-2 minuti.
+    Se il sito è pubblicato su Register, dopo la pubblicazione va ricaricato il pacchetto (chiedi a Vittorio).</div>
+    <label>Chiave di accesso (GitHub token)</label>
+    <input type="password" id="tok" value="${esc(token())}" placeholder="github_pat_…">
+    <div class="row">
+      <button class="btn" id="saveTok">Salva chiave</button>
+      <button class="btn ghost" id="testTok">Prova collegamento</button>
+      <span id="tokMsg"></span>
+    </div>
+    <h2 style="margin-top:34px">Per creare la chiave (una volta sola)</h2>
+    <ol class="setup-steps">
+      <li>Vai su <a href="https://github.com/settings/personal-access-tokens/new" target="_blank">github.com → Fine-grained tokens → Generate new token</a> (serve l'account GitHub proprietario del sito).</li>
+      <li><strong>Token name:</strong> "pannello thesalt" — <strong>Expiration:</strong> 1 anno (o Custom più lungo).</li>
+      <li><strong>Repository access:</strong> "Only select repositories" → scegli <code>${REPO}</code>.</li>
+      <li><strong>Permissions → Repository permissions → Contents: Read and write.</strong> Nient'altro.</li>
+      <li>Genera, copia la chiave (inizia con <code>github_pat_</code>) e incollala qui sopra → "Salva chiave".</li>
+    </ol>
+    <p class="hint" style="margin-top:14px">La chiave resta salvata solo in questo browser. Su un altro computer/telefono va incollata di nuovo.</p>`;
+  $('#saveTok').onclick = () => { localStorage.setItem('ts-admin-token', $('#tok').value.trim()); $('#tokMsg').textContent = '✓ salvata'; $('#tokMsg').className = 'ok'; };
+  $('#testTok').onclick = async () => {
+    const m = $('#tokMsg'); m.textContent = '…'; m.className = '';
+    try{
+      localStorage.setItem('ts-admin-token', $('#tok').value.trim());
+      const r = await fetch('https://api.github.com/repos/' + REPO, {headers:{'Authorization':'Bearer '+token()}});
+      if(!r.ok) throw 0;
+      const j = await r.json();
+      m.textContent = j.permissions && j.permissions.push ? '✓ collegato, permessi di scrittura ok' : '⚠ collegato ma SENZA permessi di scrittura';
+      m.className = j.permissions && j.permissions.push ? 'ok' : '';
+    }catch(e){ m.textContent = '✗ chiave non valida'; }
+  };
+}
+
+/* ============ PUBBLICA ============ */
+function log(s){ const l = $('#log'); l.style.display = 'block'; l.textContent += s + '\n'; l.scrollTop = 1e9; }
+$('#btnScarta').onclick = () => { if(confirm('Scartare tutte le modifiche non pubblicate?')) location.reload(); };
+$('#btnPub').onclick = async () => {
+  if(busy) return;
+  if(!token()){ switchTab('setup'); alert('Prima inserisci la chiave di accesso in Impostazioni.'); return; }
+  busy = true; $('#btnPub').disabled = true; $('#log').textContent = '';
+  const msg = 'Aggiornamento contenuti dal pannello';
+  try{
+    const imgs = Object.entries(newFiles);
+    for(let i = 0; i < imgs.length; i++){
+      log(`Carico foto ${i+1}/${imgs.length}: ${imgs[i][0]}`);
+      await ghPut(imgs[i][0], imgs[i][1], msg + ' (foto)');
+    }
+    log('Aggiorno contenuti.json…');
+    await ghPut('assets/data/contenuti.json', utf8b64(JSON.stringify(data, null, 2)), msg);
+    log('Rigenero index.html…');
+    let idx = (await ghGet('index.html')).text;
+    idx = replaceSection(idx, 'EVENTI:START', 'EVENTI:END', genEventi());
+    idx = replaceSection(idx, 'JCARD:START', 'JCARD:END', genJCardIndex());
+    idx = replaceSection(idx, 'PODCAST:START', 'PODCAST:END', genPodcast());
+    await ghPut('index.html', utf8b64(idx), msg);
+    log('Rigenero journal.html…');
+    let jr = (await ghGet('journal.html')).text;
+    jr = replaceSection(jr, 'ARTICOLI:START', 'ARTICOLI:END', genJournalGrid());
+    await ghPut('journal.html', utf8b64(jr), msg);
+    for(const a of data.articoli){
+      if(!a.slug) a.slug = slugify(a.titolo);
+      log('Rigenero articolo: journal-' + a.slug + '.html…');
+      await ghPut('journal-' + a.slug + '.html', utf8b64(genArticoloPage(a)), msg);
+    }
+    newFiles = {}; dirty = false; $('#pubbar').classList.remove('show');
+    log('✓ FATTO. Modifiche pubblicate su GitHub.');
+    alert('Pubblicato! Se il sito è collegato a Vercel/GitHub Pages sarà online tra 1-2 minuti.');
+  }catch(e){
+    log('✗ ERRORE: ' + e.message);
+    alert('Qualcosa è andato storto: ' + e.message + '\nRiprova o manda uno screenshot a Vittorio.');
+  }
+  busy = false; $('#btnPub').disabled = false;
+};
+
+/* ============ AVVIO ============ */
+(async function init(){
+  renderSetup();
+  try{
+    const r = await ghGet('assets/data/contenuti.json');
+    data = JSON.parse(r.text);
+  }catch(e){
+    $('#pane-eventi').innerHTML = '<p class="hint">Non riesco a leggere i contenuti dal repository (' + esc(e.message) + ').<br>Controlla la connessione o la chiave in Impostazioni.</p>';
+    return;
+  }
+  renderEventi(); renderJournal(); renderPodcast();
+  if(!token()) switchTab('setup');
+})();
+</script>
+</body>
+</html>
