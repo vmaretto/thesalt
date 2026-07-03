@@ -540,8 +540,9 @@ function renderSetup(){
     </div>
     <p class="hint" style="margin-top:14px">La password resta salvata solo in questo browser: su un altro computer o
     telefono va inserita di nuovo. Se non la ricordi, chiedila a Vittorio.</p>
-    <h2 style="margin-top:34px">Per il gestore del sito</h2>
-    <ol class="setup-steps">
+    <details style="margin-top:34px">
+    <summary style="cursor:pointer;font-family:Archivo;font-weight:800;font-size:1.05rem">Note tecniche per il gestore del sito (Vittorio)</summary>
+    <ol class="setup-steps" style="margin-top:14px">
       <li>Su Vercel: progetto <code>thesalt</code> → Settings → <strong>Environment Variables</strong> → aggiungi
         <code>PANEL_PASSWORD</code> (la password da dare a Paolo) e <code>GITHUB_TOKEN</code>
         (token fine-grained creato su <a href="https://github.com/settings/personal-access-tokens/new" target="_blank">github.com</a>:
@@ -549,7 +550,8 @@ function renderSetup(){
       <li>Poi: Deployments → menu ⋯ sull'ultimo deploy → <strong>Redeploy</strong>, per attivare le variabili.</li>
       <li>In alternativa, nel campo qui sopra si può incollare direttamente un token GitHub
         (<code>github_pat_…</code>): il pannello lo riconosce e scrive direttamente, senza passare dal server.</li>
-    </ol>`;
+    </ol>
+    </details>`;
   $('#saveTok').onclick = () => { localStorage.setItem('ts-admin-token', $('#tok').value.trim()); $('#tokMsg').textContent = '✓ salvata'; $('#tokMsg').className = 'ok'; };
   $('#testTok').onclick = async () => {
     const m = $('#tokMsg'); m.textContent = '…'; m.className = '';
