@@ -99,7 +99,18 @@ let newFiles = {};        // path -> base64 (nuove immagini da caricare)
 let busy = false;
 
 const $ = s => document.querySelector(s);
-const token = () => localStorage.getItem('ts-admin-token') || '';
+const key = () => localStorage.getItem('ts-admin-token') || '';
+const isToken = k => /^(gh[pous]_|github_pat_)/.test(k);
+const token = () => isToken(key()) ? key() : '';
+/* Modalità password: la scrittura passa dalla funzione /api/publish su Vercel,
+   che custodisce la chiave GitHub lato server. */
+async function apiCall(body){
+  const r = await fetch('/api/publish', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({password: key(), ...body})});
+  const j = await r.json().catch(() => ({}));
+  if(!r.ok) throw new Error(j.error || ('API ' + r.status));
+  return j;
+}
 
 /* ============ GITHUB API ============ */
 async function ghGet(path){
@@ -113,6 +124,7 @@ async function ghGet(path){
   return {text: new TextDecoder().decode(bytes), sha: j.sha};
 }
 async function ghPut(path, contentB64, message){
+  if(!isToken(key())){ await apiCall({op:'put', path, content: contentB64, message}); return; }
   let sha;
   try { sha = (await ghGetMeta(path)).sha; } catch(e){ sha = undefined; }
   const body = {message, content: contentB64, branch: BRANCH};
@@ -517,36 +529,43 @@ function renderPodcast(){
 function renderSetup(){
   const p = $('#pane-setup');
   p.innerHTML = `<h2>Impostazioni</h2>
-    <div class="warn"><strong>Come funziona:</strong> questo pannello salva le modifiche sul repository GitHub del sito
-    (<code>${REPO}</code>). Se il sito è collegato a Vercel o GitHub Pages, le modifiche vanno online da sole in 1-2 minuti.
-    Se il sito è pubblicato su Register, dopo la pubblicazione va ricaricato il pacchetto (chiedi a Vittorio).</div>
-    <label>Chiave di accesso (GitHub token)</label>
-    <input type="password" id="tok" value="${esc(token())}" placeholder="github_pat_…">
+    <div class="warn"><strong>Come funziona:</strong> quando premi "Pubblica sul sito" le modifiche vengono salvate
+    nell'archivio del sito e vanno online da sole in 1-2 minuti. Serve solo la password qui sotto.</div>
+    <label>Password del pannello</label>
+    <input type="password" id="tok" value="${esc(key())}" placeholder="la password che ti è stata data">
     <div class="row">
-      <button class="btn" id="saveTok">Salva chiave</button>
+      <button class="btn" id="saveTok">Salva</button>
       <button class="btn ghost" id="testTok">Prova collegamento</button>
       <span id="tokMsg"></span>
     </div>
-    <h2 style="margin-top:34px">Per creare la chiave (una volta sola)</h2>
+    <p class="hint" style="margin-top:14px">La password resta salvata solo in questo browser: su un altro computer o
+    telefono va inserita di nuovo. Se non la ricordi, chiedila a Vittorio.</p>
+    <h2 style="margin-top:34px">Per il gestore del sito</h2>
     <ol class="setup-steps">
-      <li>Vai su <a href="https://github.com/settings/personal-access-tokens/new" target="_blank">github.com → Fine-grained tokens → Generate new token</a> (serve l'account GitHub proprietario del sito).</li>
-      <li><strong>Token name:</strong> "pannello thesalt" — <strong>Expiration:</strong> 1 anno (o Custom più lungo).</li>
-      <li><strong>Repository access:</strong> "Only select repositories" → scegli <code>${REPO}</code>.</li>
-      <li><strong>Permissions → Repository permissions → Contents: Read and write.</strong> Nient'altro.</li>
-      <li>Genera, copia la chiave (inizia con <code>github_pat_</code>) e incollala qui sopra → "Salva chiave".</li>
-    </ol>
-    <p class="hint" style="margin-top:14px">La chiave resta salvata solo in questo browser. Su un altro computer/telefono va incollata di nuovo.</p>`;
+      <li>Su Vercel: progetto <code>thesalt</code> → Settings → <strong>Environment Variables</strong> → aggiungi
+        <code>PANEL_PASSWORD</code> (la password da dare a Paolo) e <code>GITHUB_TOKEN</code>
+        (token fine-grained creato su <a href="https://github.com/settings/personal-access-tokens/new" target="_blank">github.com</a>:
+        Repository access solo <code>${REPO}</code>, permesso <strong>Contents: Read and write</strong>, scadenza lunga).</li>
+      <li>Poi: Deployments → menu ⋯ sull'ultimo deploy → <strong>Redeploy</strong>, per attivare le variabili.</li>
+      <li>In alternativa, nel campo qui sopra si può incollare direttamente un token GitHub
+        (<code>github_pat_…</code>): il pannello lo riconosce e scrive direttamente, senza passare dal server.</li>
+    </ol>`;
   $('#saveTok').onclick = () => { localStorage.setItem('ts-admin-token', $('#tok').value.trim()); $('#tokMsg').textContent = '✓ salvata'; $('#tokMsg').className = 'ok'; };
   $('#testTok').onclick = async () => {
     const m = $('#tokMsg'); m.textContent = '…'; m.className = '';
+    localStorage.setItem('ts-admin-token', $('#tok').value.trim());
     try{
-      localStorage.setItem('ts-admin-token', $('#tok').value.trim());
-      const r = await fetch('https://api.github.com/repos/' + REPO, {headers:{'Authorization':'Bearer '+token()}});
-      if(!r.ok) throw 0;
-      const j = await r.json();
-      m.textContent = j.permissions && j.permissions.push ? '✓ collegato, permessi di scrittura ok' : '⚠ collegato ma SENZA permessi di scrittura';
-      m.className = j.permissions && j.permissions.push ? 'ok' : '';
-    }catch(e){ m.textContent = '✗ chiave non valida'; }
+      if(isToken(key())){
+        const r = await fetch('https://api.github.com/repos/' + REPO, {headers:{'Authorization':'Bearer '+key()}});
+        if(!r.ok) throw new Error('chiave non valida');
+        const j = await r.json();
+        if(!(j.permissions && j.permissions.push)) throw new Error('chiave senza permessi di scrittura');
+      } else {
+        await apiCall({op:'get', path:'assets/data/contenuti.json'});
+      }
+      m.textContent = '✓ collegato: puoi pubblicare';
+      m.className = 'ok';
+    }catch(e){ m.textContent = '✗ ' + (e && e.message ? e.message : 'password non valida'); }
   };
 }
 
@@ -555,7 +574,7 @@ function log(s){ const l = $('#log'); l.style.display = 'block'; l.textContent +
 $('#btnScarta').onclick = () => { if(confirm('Scartare tutte le modifiche non pubblicate?')) location.reload(); };
 $('#btnPub').onclick = async () => {
   if(busy) return;
-  if(!token()){ switchTab('setup'); alert('Prima inserisci la chiave di accesso in Impostazioni.'); return; }
+  if(!key()){ switchTab('setup'); alert('Prima inserisci la password del pannello in Impostazioni.'); return; }
   busy = true; $('#btnPub').disabled = true; $('#log').textContent = '';
   const msg = 'Aggiornamento contenuti dal pannello';
   try{
@@ -602,7 +621,7 @@ $('#btnPub').onclick = async () => {
     return;
   }
   renderEventi(); renderJournal(); renderPodcast();
-  if(!token()) switchTab('setup');
+  if(!key()) switchTab('setup');
 })();
 </script>
 </body>
