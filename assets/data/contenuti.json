@@ -1,45 +1,203 @@
 {
   "eventi": [
-    { "tag": "Talk Dinner", "titolo": "SKS Cucine", "luogo": "Show Room Eldismit",
-      "foto": ["assets/img/ev-sks-01.jpg", "assets/img/ev-sks-02.jpg", "assets/img/ev-sks-03.jpg", "assets/img/ev-sks-04.jpg", "assets/img/ev-sks-05.jpg", "assets/img/ev-sks-06.jpg"] },
-    { "tag": "Degustazione in barca", "titolo": "Palmarola (LT)", "luogo": "The Salt Experience",
-      "foto": ["assets/img/ev-palmarola-01.jpg", "assets/img/ev-palmarola-02.jpg", "assets/img/ev-palmarola-03.jpg", "assets/img/ev-palmarola-04.jpg", "assets/img/ev-palmarola-05.jpg", "assets/img/ev-palmarola-06.jpg", "assets/img/ev-palmarola-07.jpg"] },
-    { "tag": "Presentazione piattaforma", "titolo": "Switch Explorer — pOsti per AgroCamera", "luogo": "Tempio di Adriano, Piazza di Pietra · Roma",
-      "foto": ["assets/img/ev-switch-01.jpg", "assets/img/ev-switch-02.jpg", "assets/img/ev-switch-03.jpg", "assets/img/ev-switch-04.jpg", "assets/img/ev-switch-05.jpg"] },
-    { "tag": "Presentazione libro", "titolo": "«Sua Maestà il Cuore»", "luogo": "Hotel Torre del Sole · Terracina (LT)",
-      "foto": ["assets/img/ev-cuore-01.jpg", "assets/img/ev-cuore-02.jpg", "assets/img/ev-cuore-03.jpg", "assets/img/ev-cuore-04.jpg", "assets/img/ev-cuore-05.jpg"] },
-    { "tag": "Talk Dinner", "titolo": "Il Sale, l'alimento invisibile", "luogo": "Gaggenau Showroom Roma by Modula",
-      "foto": ["assets/img/ev-gaggenau-01.jpg", "assets/img/ev-gaggenau-02.jpg", "assets/img/ev-gaggenau-03.jpg", "assets/img/ev-gaggenau-04.jpg", "assets/img/ev-gaggenau-05.jpg"] },
-    { "tag": "Presentazione romanzo", "titolo": "Il Sale del Führer", "luogo": "Mondadori Via Piave · Roma",
-      "foto": ["assets/img/ev-fuhrer-01.jpg", "assets/img/ev-fuhrer-02.jpg", "assets/img/ev-fuhrer-03.jpg", "assets/img/ev-fuhrer-04.jpg", "assets/img/ev-fuhrer-05.jpg", "assets/img/ev-fuhrer-06.jpg", "assets/img/ev-fuhrer-07.jpg", "assets/img/ev-fuhrer-08.jpg", "assets/img/ev-fuhrer-09.jpg"] },
-    { "tag": "Masterclass sul sale", "titolo": "Intrecci — Accademia di Alta Formazione di Sala", "luogo": "Castiglione in Teverina (VT)",
-      "foto": ["assets/img/ev-masterclass-intrecci-01.jpg", "assets/img/ev-masterclass-intrecci-02.jpg", "assets/img/ev-masterclass-intrecci-03.jpg"] },
-    { "tag": "Masterclass", "titolo": "Locanda Ruggieri — Chef Michele Ruggieri", "luogo": "Terracina (LT)",
-      "foto": ["assets/img/ev-ruggieri-01.jpg", "assets/img/ev-ruggieri-02.jpg"] },
-    { "tag": "Masterclass", "titolo": "Taverna Paradiso", "luogo": "Fregene · Roma",
-      "foto": ["assets/img/ev-taverna-masterclass-01.jpg"] },
-    { "tag": "The Salt Cocktails", "titolo": "Taverna Paradiso — Bartender Massimo Cori", "luogo": "Fregene · Roma",
-      "foto": ["assets/img/ev-taverna-cocktails-01.jpg"] },
-    { "tag": "Membro commissione d'esame", "titolo": "Intrecci — Accademia di Alta Formazione di Sala", "luogo": "Castiglione in Teverina (VT)",
-      "foto": ["assets/img/ev-commissione-01.jpg", "assets/img/ev-commissione-02.jpg", "assets/img/ev-commissione-03.jpg", "assets/img/ev-commissione-04.jpg", "assets/img/ev-commissione-05.jpg"] },
-    { "tag": "Degustazione in barca", "titolo": "Arco Naturale — Ponza (LT)", "luogo": "Organizzazione D.M.",
-      "foto": ["assets/img/ev-arco-naturale-01.jpg"] },
-    { "tag": "Seminario", "titolo": "Mangio Ergo Sum — Chef Fabio Campoli", "luogo": "Forum Fiera di Roma",
-      "foto": ["assets/img/ev-form2.jpg"] },
-    { "tag": "The Salt Dinner", "titolo": "Vetreria — Chef Salvo Pellegriti", "luogo": "Firenze",
-      "foto": ["assets/img/ev-vetreria-01.jpg"] },
-    { "tag": "The Salt Lunch", "titolo": "Pieve di Caminino", "luogo": "Roccastrada (GR)",
-      "foto": ["assets/img/ev-exp1.jpg"] },
-    { "tag": "The Salt Cocktails", "titolo": "Casina Valadier", "luogo": "Roma",
-      "foto": ["assets/img/ev-exp2.jpg"] },
-    { "tag": "Seminario", "titolo": "Maître du Sel & Sommelier", "luogo": "Sommelier Coach Live · Parma",
-      "foto": ["assets/img/ev-form1.jpg"] },
-    { "tag": "Formazione di brigata", "titolo": "L'Antico Mulino", "luogo": "Priverno (LT)",
-      "foto": ["assets/img/ev-form3.jpg"] },
-    { "tag": "The Salt Brunch", "titolo": "Obicà — McArthur Glen", "luogo": "Conferenza stampa · Castel Romano (RM)",
-      "foto": ["assets/img/ev-mkt2.jpg"] },
-    { "tag": "Talk Show Cooking", "titolo": "SieMatic Cucine", "luogo": "Show Room Monte Santo · Milano",
-      "foto": ["assets/img/ev-mkt1.jpg"] }
+    {
+      "tag": "Talk Dinner",
+      "titolo": "SKS Cucine",
+      "luogo": "Show Room Eldismit",
+      "foto": [
+        "assets/img/ev-sks-01.jpg",
+        "assets/img/ev-sks-02.jpg",
+        "assets/img/ev-sks-03.jpg",
+        "assets/img/ev-sks-04.jpg",
+        "assets/img/ev-sks-05.jpg",
+        "assets/img/ev-sks-06.jpg"
+      ]
+    },
+    {
+      "tag": "Degustazione in barca",
+      "titolo": "Palmarola (LT)",
+      "luogo": "The Salt Experience",
+      "foto": [
+        "assets/img/ev-palmarola-01.jpg",
+        "assets/img/ev-palmarola-02.jpg",
+        "assets/img/ev-palmarola-03.jpg",
+        "assets/img/ev-palmarola-04.jpg",
+        "assets/img/ev-palmarola-05.jpg",
+        "assets/img/ev-palmarola-06.jpg",
+        "assets/img/ev-palmarola-07.jpg"
+      ]
+    },
+    {
+      "tag": "Presentazione piattaforma",
+      "titolo": "Switch Explorer — pOsti per AgroCamera",
+      "luogo": "Tempio di Adriano, Piazza di Pietra · Roma",
+      "foto": [
+        "assets/img/ev-switch-01.jpg",
+        "assets/img/ev-switch-02.jpg",
+        "assets/img/ev-switch-03.jpg",
+        "assets/img/ev-switch-04.jpg",
+        "assets/img/ev-switch-05.jpg"
+      ]
+    },
+    {
+      "tag": "Presentazione libro",
+      "titolo": "«Sua Maestà il Cuore»",
+      "luogo": "Hotel Torre del Sole · Terracina (LT)",
+      "foto": [
+        "assets/img/ev-cuore-01.jpg",
+        "assets/img/ev-cuore-02.jpg",
+        "assets/img/ev-cuore-03.jpg",
+        "assets/img/ev-cuore-04.jpg",
+        "assets/img/ev-cuore-05.jpg"
+      ]
+    },
+    {
+      "tag": "Talk Dinner",
+      "titolo": "Il Sale, l'alimento invisibile",
+      "luogo": "Gaggenau Showroom Roma by Modula",
+      "foto": [
+        "assets/img/ev-gaggenau-01.jpg",
+        "assets/img/ev-gaggenau-02.jpg",
+        "assets/img/ev-gaggenau-03.jpg",
+        "assets/img/ev-gaggenau-04.jpg",
+        "assets/img/ev-gaggenau-05.jpg"
+      ]
+    },
+    {
+      "tag": "Presentazione romanzo",
+      "titolo": "Il Sale del Führer",
+      "luogo": "Mondadori Via Piave · Roma",
+      "foto": [
+        "assets/img/ev-fuhrer-01.jpg",
+        "assets/img/ev-fuhrer-02.jpg",
+        "assets/img/ev-fuhrer-03.jpg",
+        "assets/img/ev-fuhrer-04.jpg",
+        "assets/img/ev-fuhrer-05.jpg",
+        "assets/img/ev-fuhrer-06.jpg",
+        "assets/img/ev-fuhrer-07.jpg",
+        "assets/img/ev-fuhrer-08.jpg",
+        "assets/img/ev-fuhrer-09.jpg"
+      ]
+    },
+    {
+      "tag": "Masterclass sul sale",
+      "titolo": "Intrecci — Accademia di Alta Formazione di Sala",
+      "luogo": "Castiglione in Teverina (VT)",
+      "foto": [
+        "assets/img/ev-masterclass-intrecci-01.jpg",
+        "assets/img/ev-masterclass-intrecci-02.jpg",
+        "assets/img/ev-masterclass-intrecci-03.jpg"
+      ]
+    },
+    {
+      "tag": "Masterclass",
+      "titolo": "Locanda Ruggieri — Chef Michele Ruggieri",
+      "luogo": "Terracina (LT)",
+      "foto": [
+        "assets/img/ev-ruggieri-01.jpg",
+        "assets/img/ev-ruggieri-02.jpg"
+      ]
+    },
+    {
+      "tag": "Masterclass",
+      "titolo": "Taverna Paradiso",
+      "luogo": "Fregene · Roma",
+      "foto": [
+        "assets/img/ev-taverna-masterclass-01.jpg"
+      ]
+    },
+    {
+      "tag": "The Salt Cocktails",
+      "titolo": "Taverna Paradiso — Bartender Massimo Cori",
+      "luogo": "Fregene · Roma",
+      "foto": [
+        "assets/img/ev-taverna-cocktails-01.jpg"
+      ]
+    },
+    {
+      "tag": "Membro commissione d'esame",
+      "titolo": "Intrecci — Accademia di Alta Formazione di Sala",
+      "luogo": "Castiglione in Teverina (VT)",
+      "foto": [
+        "assets/img/ev-commissione-01.jpg",
+        "assets/img/ev-commissione-02.jpg",
+        "assets/img/ev-commissione-03.jpg",
+        "assets/img/ev-commissione-04.jpg",
+        "assets/img/ev-commissione-05.jpg"
+      ]
+    },
+    {
+      "tag": "Degustazione in barca",
+      "titolo": "Arco Naturale — Ponza (LT)",
+      "luogo": "Organizzazione D.M.",
+      "foto": [
+        "assets/img/ev-arco-naturale-01.jpg"
+      ]
+    },
+    {
+      "tag": "Seminario",
+      "titolo": "Mangio Ergo Sum — Chef Fabio Campoli",
+      "luogo": "Forum Fiera di Roma",
+      "foto": [
+        "assets/img/ev-form2.jpg"
+      ]
+    },
+    {
+      "tag": "The Salt Dinner",
+      "titolo": "Vetreria — Chef Salvo Pellegriti",
+      "luogo": "Firenze",
+      "foto": [
+        "assets/img/ev-vetreria-01.jpg"
+      ]
+    },
+    {
+      "tag": "The Salt Lunch",
+      "titolo": "Pieve di Caminino",
+      "luogo": "Roccastrada (GR)",
+      "foto": [
+        "assets/img/ev-exp1.jpg"
+      ]
+    },
+    {
+      "tag": "The Salt Cocktails",
+      "titolo": "Casina Valadier",
+      "luogo": "Roma",
+      "foto": [
+        "assets/img/ev-exp2.jpg"
+      ]
+    },
+    {
+      "tag": "Seminario",
+      "titolo": "Maître du Sel & Sommelier",
+      "luogo": "Sommelier Coach Live · Parma",
+      "foto": [
+        "assets/img/ev-form1.jpg"
+      ]
+    },
+    {
+      "tag": "Formazione di brigata",
+      "titolo": "L'Antico Mulino",
+      "luogo": "Priverno (LT)",
+      "foto": [
+        "assets/img/ev-form3.jpg"
+      ]
+    },
+    {
+      "tag": "The Salt Brunch",
+      "titolo": "Obicà — McArthur Glen",
+      "luogo": "Conferenza stampa · Castel Romano (RM)",
+      "foto": [
+        "assets/img/ev-mkt2.jpg"
+      ]
+    },
+    {
+      "tag": "Talk Show Cooking",
+      "titolo": "SieMatic Cucine",
+      "luogo": "Show Room Monte Santo · Milano",
+      "foto": [
+        "assets/img/ev-mkt1.jpg"
+      ]
+    }
   ],
   "articoli": [
     {
