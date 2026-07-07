@@ -2,14 +2,6 @@
   "eventi": [
     {
       "tag": "Talk Dinner",
-      "titolo": "Nuovo evento prova",
-      "luogo": "roma",
-      "foto": [
-        "assets/img/ev-nuovo-evento-prova-01.jpg"
-      ]
-    },
-    {
-      "tag": "Talk Dinner",
       "titolo": "SKS Cucine",
       "luogo": "Show Room Eldismit",
       "foto": [
