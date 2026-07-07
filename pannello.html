@@ -66,6 +66,7 @@
     <button data-tab="eventi" class="on">Eventi</button>
     <button data-tab="journal">Journal</button>
     <button data-tab="podcast">Podcast</button>
+    <button data-tab="gallery">Gallery</button>
     <button data-tab="setup">Impostazioni</button>
   </div>
 </div>
@@ -74,6 +75,7 @@
   <div id="pane-eventi"></div>
   <div id="pane-journal" style="display:none"></div>
   <div id="pane-podcast" style="display:none"></div>
+  <div id="pane-gallery" style="display:none"></div>
   <div id="pane-setup" style="display:none"></div>
   <pre id="log"></pre>
 </div>
@@ -240,6 +242,10 @@ function genPodcast(){
 ${cards}
     </div>`;
 }
+function genGallery(){
+  return (data.gallery || []).map(g =>
+    `      <img src="${g.src}" alt="${esc(g.alt || '')}">`).join('\n');
+}
 function genArchivio(current){
   const anni = [...new Set(data.articoli.map(a => a.anno))].sort().reverse();
   return anni.map(y => `        <div class="year">${esc(y)}</div>\n` +
@@ -354,7 +360,7 @@ function replaceSection(html, start, end, inner){
 /* ============ RENDER UI ============ */
 function switchTab(name){
   document.querySelectorAll('.tabs button').forEach(b => b.classList.toggle('on', b.dataset.tab === name));
-  ['eventi','journal','podcast','setup'].forEach(t => $('#pane-' + t).style.display = t === name ? '' : 'none');
+  ['eventi','journal','podcast','gallery','setup'].forEach(t => $('#pane-' + t).style.display = t === name ? '' : 'none');
 }
 document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => switchTab(b.dataset.tab)));
 
@@ -526,6 +532,53 @@ function renderPodcast(){
   });
 }
 
+function nextGalleryName(){
+  let max = 0;
+  const all = (data.gallery || []).map(g => g.src).concat(Object.keys(newFiles));
+  all.forEach(p => { const m = p.match(/gallery-(\d+)\.jpg$/); if(m) max = Math.max(max, +m[1]); });
+  return 'assets/img/gallery-' + pad2(max + 1) + '.jpg';
+}
+function renderGallery(){
+  const p = $('#pane-gallery');
+  if(!data){ p.innerHTML = '<p class="hint">Caricamento…</p>'; return; }
+  if(!data.gallery) data.gallery = [];
+  p.innerHTML = `<h2>Gallery</h2>
+    <p class="hint">Le foto della pagina <strong>Gallery</strong> del sito. Trascinare non serve: usa ← → per riordinare
+    e ✕ per togliere una foto. L'ordine qui è l'ordine sul sito.</p>
+    <div class="row" style="margin:0 0 18px">
+      <label class="btn" style="margin:0;cursor:pointer">+ Aggiungi foto<input type="file" accept="image/*" multiple style="display:none"></label>
+      <span class="hint" style="margin:0" id="galCount">${data.gallery.length} foto</span>
+    </div>
+    <div class="thumbs" id="galThumbs"></div>`;
+  const thumbs = $('#galThumbs');
+  const render = () => {
+    thumbs.innerHTML = '';
+    data.gallery.forEach((g, k) => {
+      const t = document.createElement('div'); t.className = 'thumb';
+      t.innerHTML = `<img src="${srcFoto(g.src)}" alt=""><div class="tools">
+        <button title="Sposta prima" ${k===0?'disabled':''}>←</button>
+        <button title="Togli">✕</button>
+        <button title="Sposta dopo" ${k===data.gallery.length-1?'disabled':''}>→</button></div>`;
+      const [bl, bx, br] = t.querySelectorAll('button');
+      bl.onclick = () => { data.gallery.splice(k-1,0,data.gallery.splice(k,1)[0]); markDirty(); render(); };
+      br.onclick = () => { data.gallery.splice(k+1,0,data.gallery.splice(k,1)[0]); markDirty(); render(); };
+      bx.onclick = () => { if(confirm('Togliere questa foto dalla gallery?')){ data.gallery.splice(k,1); markDirty(); render(); $('#galCount').textContent = data.gallery.length + ' foto'; } };
+      thumbs.appendChild(t);
+    });
+  };
+  render();
+  p.querySelector('input[type=file]').addEventListener('change', async e => {
+    for(const file of e.target.files){
+      const b64 = await resizeToJpeg(file);
+      const name = nextGalleryName();
+      newFiles[name] = b64;
+      data.gallery.push({src: name, alt: 'THE SALT'});
+    }
+    markDirty(); render();
+    $('#galCount').textContent = data.gallery.length + ' foto';
+  });
+}
+
 function renderSetup(){
   const p = $('#pane-setup');
   p.innerHTML = `<h2>Impostazioni</h2>
@@ -597,6 +650,10 @@ $('#btnPub').onclick = async () => {
     let jr = (await ghGet('journal.html')).text;
     jr = replaceSection(jr, 'ARTICOLI:START', 'ARTICOLI:END', genJournalGrid());
     await ghPut('journal.html', utf8b64(jr), msg);
+    log('Rigenero gallery.html…');
+    let gal = (await ghGet('gallery.html')).text;
+    gal = replaceSection(gal, 'GALLERY:START', 'GALLERY:END', genGallery());
+    await ghPut('gallery.html', utf8b64(gal), msg);
     for(const a of data.articoli){
       if(!a.slug) a.slug = slugify(a.titolo);
       log('Rigenero articolo: journal-' + a.slug + '.html…');
@@ -622,7 +679,7 @@ $('#btnPub').onclick = async () => {
     $('#pane-eventi').innerHTML = '<p class="hint">Non riesco a leggere i contenuti dal repository (' + esc(e.message) + ').<br>Controlla la connessione o la chiave in Impostazioni.</p>';
     return;
   }
-  renderEventi(); renderJournal(); renderPodcast();
+  renderEventi(); renderJournal(); renderPodcast(); renderGallery();
   if(!key()) switchTab('setup');
 })();
 </script>
