@@ -1,6 +1,22 @@
 {
   "eventi": [
     {
+      "tag": "BRAND AMBASSADOR OLIO ORSINI",
+      "titolo": "BIG FISH TOURNAMENT 2026",
+      "luogo": "VENTOTENE",
+      "foto": [
+        "assets/img/ev-big-fish-tournament-01.jpg",
+        "assets/img/ev-big-fish-tournament-02.jpg",
+        "assets/img/ev-big-fish-tournament-03.jpg",
+        "assets/img/ev-big-fish-tournament-04.jpg",
+        "assets/img/ev-big-fish-tournament-05.jpg",
+        "assets/img/ev-big-fish-tournament-06.jpg",
+        "assets/img/ev-big-fish-tournament-07.jpg",
+        "assets/img/ev-big-fish-tournament-08.jpg",
+        "assets/img/ev-big-fish-tournament-09.jpg"
+      ]
+    },
+    {
       "tag": "Talk Dinner",
       "titolo": "SKS Cucine",
       "luogo": "Show Room Eldismit",
@@ -236,23 +252,77 @@
   ],
   "podcast": [],
   "gallery": [
-    { "src": "assets/img/maitre.jpg", "alt": "Il gesto del sale" },
-    { "src": "assets/img/ev-form3.jpg", "alt": "Formazione di brigata" },
-    { "src": "assets/img/ev-exp1.jpg", "alt": "The Salt Lunch" },
-    { "src": "assets/img/hero-paolo.jpg", "alt": "Paolo Santoro" },
-    { "src": "assets/img/ev-mkt2.jpg", "alt": "Talk Show Cooking" },
-    { "src": "assets/img/f-degustazioni.jpg", "alt": "Degustazioni" },
-    { "src": "assets/img/ev-exp2.jpg", "alt": "The Salt Cocktails" },
-    { "src": "assets/img/extravisionary.jpg", "alt": "Extravisionary" },
-    { "src": "assets/img/ev-form1.jpg", "alt": "Seminario" },
-    { "src": "assets/img/ev-exp3.jpg", "alt": "The Salt Dinner" },
-    { "src": "assets/img/podcast.jpg", "alt": "Podcast The Salt People" },
-    { "src": "assets/img/ev-form2.jpg", "alt": "Mangio Ergo Sum" },
-    { "src": "assets/img/ev-mkt1.jpg", "alt": "The Salt Brunch" },
-    { "src": "assets/img/f-seminari.jpg", "alt": "Seminari" },
-    { "src": "assets/img/hero2.jpg", "alt": "THE SALT esperienza" },
-    { "src": "assets/img/bio.jpg", "alt": "Paolo Santoro" },
-    { "src": "assets/img/f-talkdinner.jpg", "alt": "Talk Dinner" },
-    { "src": "assets/img/hero1.jpg", "alt": "THE SALT evento" }
+    {
+      "src": "assets/img/maitre.jpg",
+      "alt": "Il gesto del sale"
+    },
+    {
+      "src": "assets/img/ev-form3.jpg",
+      "alt": "Formazione di brigata"
+    },
+    {
+      "src": "assets/img/ev-exp1.jpg",
+      "alt": "The Salt Lunch"
+    },
+    {
+      "src": "assets/img/hero-paolo.jpg",
+      "alt": "Paolo Santoro"
+    },
+    {
+      "src": "assets/img/ev-mkt2.jpg",
+      "alt": "Talk Show Cooking"
+    },
+    {
+      "src": "assets/img/f-degustazioni.jpg",
+      "alt": "Degustazioni"
+    },
+    {
+      "src": "assets/img/ev-exp2.jpg",
+      "alt": "The Salt Cocktails"
+    },
+    {
+      "src": "assets/img/extravisionary.jpg",
+      "alt": "Extravisionary"
+    },
+    {
+      "src": "assets/img/ev-form1.jpg",
+      "alt": "Seminario"
+    },
+    {
+      "src": "assets/img/ev-exp3.jpg",
+      "alt": "The Salt Dinner"
+    },
+    {
+      "src": "assets/img/podcast.jpg",
+      "alt": "Podcast The Salt People"
+    },
+    {
+      "src": "assets/img/ev-form2.jpg",
+      "alt": "Mangio Ergo Sum"
+    },
+    {
+      "src": "assets/img/ev-mkt1.jpg",
+      "alt": "The Salt Brunch"
+    },
+    {
+      "src": "assets/img/f-seminari.jpg",
+      "alt": "Seminari"
+    },
+    {
+      "src": "assets/img/hero2.jpg",
+      "alt": "THE SALT esperienza"
+    },
+    {
+      "src": "assets/img/bio.jpg",
+      "alt": "Paolo Santoro"
+    },
+    {
+      "src": "assets/img/f-talkdinner.jpg",
+      "alt": "Talk Dinner"
+    },
+    {
+      "src": "assets/img/hero1.jpg",
+      "alt": "THE SALT evento"
+    }
   ]
 }
