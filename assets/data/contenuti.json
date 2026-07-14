@@ -253,6 +253,10 @@
   "podcast": [],
   "gallery": [
     {
+      "src": "assets/img/gallery-21.jpg",
+      "alt": "THE SALT"
+    },
+    {
       "src": "assets/img/bio.jpg",
       "alt": "Paolo Santoro"
     },
@@ -273,16 +277,28 @@
       "alt": "THE SALT"
     },
     {
+      "src": "assets/img/podcast.jpg",
+      "alt": "Podcast The Salt People"
+    },
+    {
       "src": "assets/img/gallery-04.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-19.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-22.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-23.jpg",
       "alt": "THE SALT"
     },
     {
       "src": "assets/img/f-degustazioni.jpg",
       "alt": "Degustazioni"
-    },
-    {
-      "src": "assets/img/podcast.jpg",
-      "alt": "Podcast The Salt People"
     },
     {
       "src": "assets/img/gallery-20.jpg",
@@ -301,6 +317,10 @@
       "alt": "THE SALT"
     },
     {
+      "src": "assets/img/f-seminari.jpg",
+      "alt": "Seminari"
+    },
+    {
       "src": "assets/img/gallery-07.jpg",
       "alt": "THE SALT"
     },
@@ -309,20 +329,20 @@
       "alt": "The Salt Lunch"
     },
     {
-      "src": "assets/img/f-seminari.jpg",
-      "alt": "Seminari"
+      "src": "assets/img/ev-form3.jpg",
+      "alt": "Formazione di brigata"
     },
     {
       "src": "assets/img/gallery-08.jpg",
       "alt": "THE SALT"
     },
     {
-      "src": "assets/img/ev-form3.jpg",
-      "alt": "Formazione di brigata"
-    },
-    {
       "src": "assets/img/ev-mkt2.jpg",
       "alt": "Talk Show Cooking"
+    },
+    {
+      "src": "assets/img/gallery-25.jpg",
+      "alt": "THE SALT"
     },
     {
       "src": "assets/img/ev-exp2.jpg",
@@ -394,14 +414,6 @@
     },
     {
       "src": "assets/img/gallery-18.jpg",
-      "alt": "THE SALT"
-    },
-    {
-      "src": "assets/img/gallery-19.jpg",
-      "alt": "THE SALT"
-    },
-    {
-      "src": "assets/img/gallery-21.jpg",
       "alt": "THE SALT"
     }
   ]
