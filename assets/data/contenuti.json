@@ -253,76 +253,156 @@
   "podcast": [],
   "gallery": [
     {
-      "src": "assets/img/maitre.jpg",
-      "alt": "Il gesto del sale"
-    },
-    {
-      "src": "assets/img/ev-form3.jpg",
-      "alt": "Formazione di brigata"
-    },
-    {
-      "src": "assets/img/ev-exp1.jpg",
-      "alt": "The Salt Lunch"
-    },
-    {
-      "src": "assets/img/hero-paolo.jpg",
+      "src": "assets/img/bio.jpg",
       "alt": "Paolo Santoro"
     },
     {
-      "src": "assets/img/ev-mkt2.jpg",
-      "alt": "Talk Show Cooking"
-    },
-    {
-      "src": "assets/img/f-degustazioni.jpg",
-      "alt": "Degustazioni"
-    },
-    {
-      "src": "assets/img/ev-exp2.jpg",
-      "alt": "The Salt Cocktails"
+      "src": "assets/img/maitre.jpg",
+      "alt": "Il gesto del sale"
     },
     {
       "src": "assets/img/extravisionary.jpg",
       "alt": "Extravisionary"
     },
     {
-      "src": "assets/img/ev-form1.jpg",
-      "alt": "Seminario"
+      "src": "assets/img/hero-paolo.jpg",
+      "alt": "Paolo Santoro"
     },
     {
-      "src": "assets/img/ev-exp3.jpg",
-      "alt": "The Salt Dinner"
+      "src": "assets/img/gallery-03.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-04.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/f-degustazioni.jpg",
+      "alt": "Degustazioni"
     },
     {
       "src": "assets/img/podcast.jpg",
       "alt": "Podcast The Salt People"
     },
     {
-      "src": "assets/img/ev-form2.jpg",
-      "alt": "Mangio Ergo Sum"
+      "src": "assets/img/gallery-20.jpg",
+      "alt": "THE SALT"
     },
     {
-      "src": "assets/img/ev-mkt1.jpg",
-      "alt": "The Salt Brunch"
+      "src": "assets/img/gallery-01.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-02.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-06.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-07.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/ev-exp1.jpg",
+      "alt": "The Salt Lunch"
     },
     {
       "src": "assets/img/f-seminari.jpg",
       "alt": "Seminari"
     },
     {
+      "src": "assets/img/gallery-08.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/ev-form3.jpg",
+      "alt": "Formazione di brigata"
+    },
+    {
+      "src": "assets/img/ev-mkt2.jpg",
+      "alt": "Talk Show Cooking"
+    },
+    {
+      "src": "assets/img/ev-exp2.jpg",
+      "alt": "The Salt Cocktails"
+    },
+    {
+      "src": "assets/img/ev-form1.jpg",
+      "alt": "Seminario"
+    },
+    {
+      "src": "assets/img/ev-form2.jpg",
+      "alt": "Mangio Ergo Sum"
+    },
+    {
+      "src": "assets/img/ev-exp3.jpg",
+      "alt": "The Salt Dinner"
+    },
+    {
       "src": "assets/img/hero2.jpg",
       "alt": "THE SALT esperienza"
     },
     {
-      "src": "assets/img/bio.jpg",
-      "alt": "Paolo Santoro"
+      "src": "assets/img/ev-mkt1.jpg",
+      "alt": "The Salt Brunch"
     },
     {
       "src": "assets/img/f-talkdinner.jpg",
       "alt": "Talk Dinner"
     },
     {
-      "src": "assets/img/hero1.jpg",
-      "alt": "THE SALT evento"
+      "src": "assets/img/gallery-05.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-09.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-10.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-11.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-12.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-13.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-14.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-15.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-16.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-17.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-18.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-19.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-21.jpg",
+      "alt": "THE SALT"
     }
   ]
 }
