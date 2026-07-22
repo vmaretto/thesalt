@@ -281,10 +281,6 @@
       "alt": "THE SALT"
     },
     {
-      "src": "assets/img/bio.jpg",
-      "alt": "Paolo Santoro"
-    },
-    {
       "src": "assets/img/gallery-26.jpg",
       "alt": "THE SALT"
     },
@@ -295,10 +291,6 @@
     {
       "src": "assets/img/extravisionary.jpg",
       "alt": "Extravisionary"
-    },
-    {
-      "src": "assets/img/gallery-03.jpg",
-      "alt": "THE SALT"
     },
     {
       "src": "assets/img/hero-paolo.jpg",
@@ -317,6 +309,10 @@
       "alt": "THE SALT"
     },
     {
+      "src": "assets/img/gallery-03.jpg",
+      "alt": "THE SALT"
+    },
+    {
       "src": "assets/img/gallery-23.jpg",
       "alt": "THE SALT"
     },
@@ -325,8 +321,8 @@
       "alt": "THE SALT"
     },
     {
-      "src": "assets/img/gallery-06.jpg",
-      "alt": "THE SALT"
+      "src": "assets/img/bio.jpg",
+      "alt": "Paolo Santoro"
     },
     {
       "src": "assets/img/gallery-21.jpg",
@@ -341,12 +337,20 @@
       "alt": "THE SALT"
     },
     {
+      "src": "assets/img/gallery-06.jpg",
+      "alt": "THE SALT"
+    },
+    {
       "src": "assets/img/gallery-02.jpg",
       "alt": "THE SALT"
     },
     {
       "src": "assets/img/f-seminari.jpg",
       "alt": "Seminari"
+    },
+    {
+      "src": "assets/img/gallery-25.jpg",
+      "alt": "THE SALT"
     },
     {
       "src": "assets/img/gallery-07.jpg",
@@ -367,10 +371,6 @@
     {
       "src": "assets/img/ev-mkt2.jpg",
       "alt": "Talk Show Cooking"
-    },
-    {
-      "src": "assets/img/gallery-25.jpg",
-      "alt": "THE SALT"
     },
     {
       "src": "assets/img/ev-exp2.jpg",
