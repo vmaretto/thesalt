@@ -277,16 +277,16 @@
   "podcast": [],
   "gallery": [
     {
-      "src": "assets/img/gallery-21.jpg",
-      "alt": "THE SALT"
-    },
-    {
       "src": "assets/img/gallery-19.jpg",
       "alt": "THE SALT"
     },
     {
       "src": "assets/img/bio.jpg",
       "alt": "Paolo Santoro"
+    },
+    {
+      "src": "assets/img/gallery-26.jpg",
+      "alt": "THE SALT"
     },
     {
       "src": "assets/img/maitre.jpg",
@@ -297,12 +297,12 @@
       "alt": "Extravisionary"
     },
     {
-      "src": "assets/img/hero-paolo.jpg",
-      "alt": "Paolo Santoro"
-    },
-    {
       "src": "assets/img/gallery-03.jpg",
       "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/hero-paolo.jpg",
+      "alt": "Paolo Santoro"
     },
     {
       "src": "assets/img/podcast.jpg",
@@ -317,15 +317,19 @@
       "alt": "THE SALT"
     },
     {
-      "src": "assets/img/gallery-22.jpg",
-      "alt": "THE SALT"
-    },
-    {
       "src": "assets/img/gallery-23.jpg",
       "alt": "THE SALT"
     },
     {
+      "src": "assets/img/gallery-22.jpg",
+      "alt": "THE SALT"
+    },
+    {
       "src": "assets/img/gallery-06.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-21.jpg",
       "alt": "THE SALT"
     },
     {
@@ -438,6 +442,10 @@
     },
     {
       "src": "assets/img/gallery-18.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-27.jpg",
       "alt": "THE SALT"
     }
   ]
