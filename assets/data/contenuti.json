@@ -277,10 +277,6 @@
   "podcast": [],
   "gallery": [
     {
-      "src": "assets/img/gallery-29.jpg",
-      "alt": "THE SALT"
-    },
-    {
       "src": "assets/img/gallery-19.jpg",
       "alt": "THE SALT"
     },
@@ -454,6 +450,10 @@
     },
     {
       "src": "assets/img/gallery-28.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-29.jpg",
       "alt": "THE SALT"
     }
   ]
