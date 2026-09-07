@@ -1,6 +1,18 @@
 {
   "eventi": [
     {
+      "tag": "SEMINARIO",
+      "titolo": "SYNERGY DAYS - NAPOLI 2026",
+      "luogo": "UNIVERSITÀ DI AGRARIA - NAPOLI",
+      "foto": [
+        "assets/img/ev-synergy-days-napoli-2026-01.jpg",
+        "assets/img/ev-synergy-days-napoli-2026-02.jpg",
+        "assets/img/ev-synergy-days-napoli-2026-03.jpg",
+        "assets/img/ev-synergy-days-napoli-2026-04.jpg",
+        "assets/img/ev-synergy-days-napoli-2026-05.jpg"
+      ]
+    },
+    {
       "tag": "BRAND AMBASSADOR OLIO ORSINI",
       "titolo": "BIG FISH TOURNAMENT 2026",
       "luogo": "VENTOTENE",
