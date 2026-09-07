@@ -277,16 +277,12 @@
   "podcast": [],
   "gallery": [
     {
-      "src": "assets/img/gallery-29.jpg",
-      "alt": "THE SALT"
+      "src": "assets/img/ev-form1.jpg",
+      "alt": "Seminario"
     },
     {
       "src": "assets/img/gallery-26.jpg",
       "alt": "THE SALT"
-    },
-    {
-      "src": "assets/img/ev-form1.jpg",
-      "alt": "Seminario"
     },
     {
       "src": "assets/img/extravisionary.jpg",
@@ -454,6 +450,22 @@
     },
     {
       "src": "assets/img/gallery-28.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-29.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-31.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-32.jpg",
+      "alt": "THE SALT"
+    },
+    {
+      "src": "assets/img/gallery-33.jpg",
       "alt": "THE SALT"
     }
   ]
