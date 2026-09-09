@@ -296,10 +296,6 @@
       "alt": "THE SALT"
     },
     {
-      "src": "assets/img/extravisionary.jpg",
-      "alt": "Extravisionary"
-    },
-    {
       "src": "assets/img/maitre.jpg",
       "alt": "Il gesto del sale"
     },
@@ -314,6 +310,10 @@
     {
       "src": "assets/img/hero-paolo.jpg",
       "alt": "Paolo Santoro"
+    },
+    {
+      "src": "assets/img/extravisionary.jpg",
+      "alt": "Extravisionary"
     },
     {
       "src": "assets/img/gallery-35.jpg",
@@ -344,11 +344,11 @@
       "alt": "THE SALT"
     },
     {
-      "src": "assets/img/gallery-19.jpg",
+      "src": "assets/img/gallery-22.jpg",
       "alt": "THE SALT"
     },
     {
-      "src": "assets/img/gallery-22.jpg",
+      "src": "assets/img/gallery-19.jpg",
       "alt": "THE SALT"
     },
     {
