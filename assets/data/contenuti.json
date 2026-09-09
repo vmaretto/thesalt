@@ -316,10 +316,6 @@
       "alt": "Extravisionary"
     },
     {
-      "src": "assets/img/gallery-35.jpg",
-      "alt": "THE SALT"
-    },
-    {
       "src": "assets/img/bio.jpg",
       "alt": "Paolo Santoro"
     },
@@ -348,12 +344,12 @@
       "alt": "THE SALT"
     },
     {
-      "src": "assets/img/gallery-19.jpg",
-      "alt": "THE SALT"
-    },
-    {
       "src": "assets/img/f-degustazioni.jpg",
       "alt": "Degustazioni"
+    },
+    {
+      "src": "assets/img/gallery-19.jpg",
+      "alt": "THE SALT"
     },
     {
       "src": "assets/img/gallery-01.jpg",
@@ -408,12 +404,12 @@
       "alt": "Mangio Ergo Sum"
     },
     {
-      "src": "assets/img/ev-mkt1.jpg",
-      "alt": "The Salt Brunch"
+      "src": "assets/img/gallery-35.jpg",
+      "alt": "THE SALT"
     },
     {
-      "src": "assets/img/hero2.jpg",
-      "alt": "THE SALT esperienza"
+      "src": "assets/img/ev-mkt1.jpg",
+      "alt": "The Salt Brunch"
     },
     {
       "src": "assets/img/gallery-02.jpg",
@@ -426,6 +422,10 @@
     {
       "src": "assets/img/f-talkdinner.jpg",
       "alt": "Talk Dinner"
+    },
+    {
+      "src": "assets/img/hero2.jpg",
+      "alt": "THE SALT esperienza"
     },
     {
       "src": "assets/img/gallery-05.jpg",
