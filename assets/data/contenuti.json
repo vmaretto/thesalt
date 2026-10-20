@@ -1,6 +1,17 @@
 {
   "eventi": [
     {
+      "tag": "Talk - Presentation",
+      "titolo": "BNI - LANCIO CAPITOLO HYBRID MAREMMA TOSCANA",
+      "luogo": "Resort Villa Santa Genoveffa - Paganico (Grosseto)",
+      "foto": [
+        "assets/img/ev-bni-lancio-capitolo-hybrid-maremma-toscana-01.jpg",
+        "assets/img/ev-bni-lancio-capitolo-hybrid-maremma-toscana-02.jpg",
+        "assets/img/ev-bni-lancio-capitolo-hybrid-maremma-toscana-03.jpg",
+        "assets/img/ev-bni-lancio-capitolo-hybrid-maremma-toscana-04.jpg"
+      ]
+    },
+    {
       "tag": "SEMINARIO",
       "titolo": "SYNERGY DAYS - NAPOLI 2026",
       "luogo": "UNIVERSITÀ DI AGRARIA - NAPOLI",
